@@ -20,6 +20,7 @@ cd pytorch && \
     pip install -v . && cd .. && rm -rf pytorch
 
 # install torchvision and torchtext.
+git clone https://github.com/pytorch/vision.git && cd vision && $HOME/conda/envs/pytorch-py3.6/bin/pip install -v . && cd .. && rm -rf vision
 $HOME/conda/envs/pytorch-py3.6/bin/pip install --upgrade git+https://github.com/pytorch/text
 $HOME/conda/envs/pytorch-py3.6/bin/pip install spacy
 $HOME/conda/envs/pytorch-py3.6/bin/python -m spacy download en
