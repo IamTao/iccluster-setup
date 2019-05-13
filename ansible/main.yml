@@ -8,14 +8,8 @@
 
     # Mounting shared filesystems
     - mlodata1
+    - mloraw1
     # - mlo-container-scratch  # node becomes unavailable after restart
-
-    - gpu-monitor
-
-    # Send usage metrics to InfluxDB
-    - role: telegraf
-      influxdb_host: vogels-timeseries.mlo.k8s.iccluster.epfl.ch
-      influxdb_port: 30086
 
     # GPU
     - role: cuda
@@ -26,9 +20,9 @@
       cuda_version_minor: 1
       cudnn_version: 7.5
 
-    # Pytorch
-    - role: anaconda-with-pytorch
-      cudatoolkit_version: '10.0'
+    # # Pytorch
+    # - role: anaconda-with-pytorch
+    #   cudatoolkit_version: '10.0'
 
     # Docker
     - role: docker-ce

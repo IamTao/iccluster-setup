@@ -28,7 +28,32 @@
     channels: pytorch
   loop:
     - cudatoolkit={{ cudatoolkit_version }}
-    - pytorch
     - torchvision
+    - torchtext
   async: 600  # 10 minute timeout
   poll: 5
+
+- name: Install python-blosc
+  conda:
+    name: "{{ item }}"
+    state: latest
+    channels: conda-forge
+    executable: /opt/anaconda3/bin/conda
+  loop:
+    - python-blosc
+  async: 600  # 10 minute timeout
+  poll: 5
+  tags:
+  - conda
+- name: Install magma-cuda100
+  conda:
+    name: "{{ item }}"
+    state: latest
+    channels: pytorch
+    executable: /opt/anaconda3/bin/conda
+  loop:
+    - magma-cuda100
+  async: 600  # 10 minute timeout
+  poll: 5
+  tags:
+  - conda

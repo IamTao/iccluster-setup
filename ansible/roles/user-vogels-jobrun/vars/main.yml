@@ -1,9 +1,0 @@
-num_gpus: 2
-user: vogels
-jobmonitor_metadata_host: vogels-metadata.mlo.k8s.iccluster.epfl.ch
-jobmonitor_metadata_port: 30017
-jobmonitor_metadata_db: jobmonitor
-jobmonitor_timeseries_host: vogels-timeseries.mlo.k8s.iccluster.epfl.ch
-jobmonitor_timeseries_port: 30086
-data_dir: /mlodata1/vogels
-socket_ifname: ens786f0

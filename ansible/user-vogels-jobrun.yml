@@ -1,5 +1,0 @@
----
-- hosts: iccluster
-  remote_user: vogels
-  roles:
-    - user-vogels-jobrun

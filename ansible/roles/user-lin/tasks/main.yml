@@ -1,0 +1,49 @@
+---
+
+- name: Install public key for passwordless access
+  authorized_key:
+    user: lin
+    state: present
+    key: '{{ item }}'
+  with_file:
+    - public_keys/id_rsa.pub
+    - public_keys/id_rsa.pub
+- name: Deploy my private key
+  copy:
+    src: ~/.ssh/id_rsa
+    dest: ~/.ssh/id_rsa
+    mode: 0600
+- name: Deploy my public key
+  copy:
+    src: ~/.ssh/id_rsa.pub
+    dest: ~/.ssh/id_rsa.pub
+    mode: 0600
+- name: .gitconfig
+  copy:
+    src: gitconfig
+    dest: ~/.gitconfig
+- name: .profile
+  copy:
+    src: profile
+    dest: ~/.profile
+- name: Cloning  oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: ~/.oh-my-zsh
+  tags:
+  - zsh
+- name: ZSH Config
+  template:
+    src: zshrc.j2
+    dest: ~/.zshrc
+  tags:
+  - zsh
+
+# Copy python files.
+- name: Copy python setup files.
+  copy:
+    src: files/configure_dmlb.sh
+    dest: ~/install/
+    mode: u+x
+  tags:
+    python

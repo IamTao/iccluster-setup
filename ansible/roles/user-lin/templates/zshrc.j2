@@ -94,17 +94,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export LC_CTYPE=en_US.UTF-8
-export DATA="{{ data_dir }}"
-
-export JOBMONITOR_RESULTS_DIR="$DATA/results"
-export JOBMONITOR_TELEGRAF_HOST=localhost
-export JOBMONITOR_TELEGRAF_PORT=8092
-export JOBMONITOR_METADATA_HOST="{{ jobmonitor_metadata_host }}"
-export JOBMONITOR_METADATA_PORT="{{ jobmonitor_metadata_port }}"
-export JOBMONITOR_METADATA_DB="{{ jobmonitor_metadata_db }}"
-export JOBMONITOR_TIMESERIES_HOST="{{ jobmonitor_timeseries_host }}"
-export JOBMONITOR_TIMESERIES_PORT="{{ jobmonitor_timeseries_port }}"
-export JOBMONITOR_TIMESERIES_DB="{{ jobmonitor_timeseries_db }}"
 
 function use_gpu() {
   export CUDA_VISIBLE_DEVICES=$1
@@ -116,3 +105,10 @@ function sshlogin() {
 }
 
 export PATH=$PATH:$HOME/.local/bin
+
+# configure mpi
+export PATH="/mlodata1/.openmpi/bin:$PATH"
+export LD_LIBRARY_PATH="/mlodata1/.openmpi/lib:$LD_LIBRARY_PATH"
+
+# add more path to env.
+export PATH="/usr/local/bin/:$PATH"

@@ -1,0 +1,5 @@
+---
+- hosts: iccluster
+  remote_user: lin
+  roles:
+    - user-lin
