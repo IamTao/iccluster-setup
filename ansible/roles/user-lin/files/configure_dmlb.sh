@@ -9,7 +9,7 @@ $HOME/conda/bin/conda update -n base conda
 $HOME/conda/bin/conda create -y --name pytorch-py$PYTHON_VERSION python=$PYTHON_VERSION numpy pyyaml scipy ipython mkl mkl-include
 $HOME/conda/bin/conda install -y --name pytorch-py$PYTHON_VERSION -c soumith magma-cuda100
 $HOME/conda/bin/conda install -y --name pytorch-py$PYTHON_VERSION scikit-learn
-$HOME/conda/envs/pytorch-py3.6/bin/pip install pytelegraf pymongo influxdb kubernetes jinja2
+$HOME/conda/envs/pytorch-py3.6/bin/pip install -y pytelegraf pymongo influxdb kubernetes jinja2
 
 # configure pytorch
 git clone --recursive  https://github.com/pytorch/pytorch
@@ -17,7 +17,7 @@ cd pytorch && \
     git submodule update --init && \
     TORCH_CUDA_ARCH_LIST="3.5 3.7 5.2 6.0 6.1 7.0+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
     CMAKE_PREFIX_PATH="$(dirname $(which $HOME/conda/bin/conda))/../" \
-    pip install -v . && cd .. && rm -rf pytorch
+    $HOME/conda/envs/pytorch-py3.6/bin/pip install -v . && cd .. && rm -rf pytorch
 
 # install torchvision and torchtext.
 git clone https://github.com/pytorch/vision.git && cd vision && $HOME/conda/envs/pytorch-py3.6/bin/pip install -v . && cd .. && rm -rf vision
